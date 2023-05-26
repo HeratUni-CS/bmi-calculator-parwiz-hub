@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'iconData.dart';
+import 'reusableWidget.dart';
 
 const B_color = Color(0xFFEB1557);
-const E_color = Color(0xFF111428);
+const firstColor = Color(0xFF111428);
+const activcard = Color(0xFF191935);
+
+enum gender { Male, Female }
 
 class InputPage extends StatefulWidget {
   @override
@@ -11,6 +16,8 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   @override
+  gender? selectgender;
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -22,14 +29,25 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 usableWidget(
-                  color: E_color,
+                  onPress: () {
+                    setState(() {
+                      selectgender = gender.Male;
+                    });
+                  },
+                  color: (selectgender == gender.Male) ? activcard : firstColor,
                   icon: iconPart(
                     useIcon: FontAwesomeIcons.mars,
                     Lable: 'MALE',
                   ),
                 ),
                 usableWidget(
-                  color: E_color,
+                  onPress: () {
+                    setState(() {
+                      selectgender = gender.Female;
+                    });
+                  },
+                  color:
+                      (selectgender == gender.Female) ? activcard : firstColor,
                   icon: iconPart(
                       useIcon: FontAwesomeIcons.venus, Lable: 'FEMALE'),
                 ),
@@ -37,16 +55,16 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           usableWidget(
-            color: E_color,
+            color: firstColor,
           ),
           Expanded(
             child: Row(
               children: [
                 usableWidget(
-                  color: E_color,
+                  color: firstColor,
                 ),
                 usableWidget(
-                  color: E_color,
+                  color: firstColor,
                 ),
               ],
             ),
@@ -57,56 +75,6 @@ class _InputPageState extends State<InputPage> {
             margin: EdgeInsets.only(top: 10),
           )
         ],
-      ),
-    );
-  }
-}
-
-class iconPart extends StatelessWidget {
-  final IconData useIcon;
-  final String Lable;
-  iconPart({required this.useIcon, required this.Lable});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          useIcon,
-          size: 66,
-          color: Color(0xFF868892),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          Lable,
-          style: TextStyle(
-            fontSize: 15,
-            color: Color(0xFF868892),
-            fontWeight: FontWeight.bold,
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class usableWidget extends StatelessWidget {
-  usableWidget({required this.color, this.icon});
-  final Color color;
-  final Widget? icon;
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        margin: EdgeInsets.all(14),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: color,
-        ),
-        child: icon,
       ),
     );
   }
