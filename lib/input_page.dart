@@ -4,6 +4,8 @@ import 'iconData.dart';
 import 'reusableWidget.dart';
 import 'constant.dart';
 import 'mybutton.dart';
+import 'resultpage.dart';
+import 'lastButton.dart';
 
 enum gender { Male, Female }
 
@@ -188,20 +190,24 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            width: double.infinity,
-            height: 65,
-            color: B_color,
-            margin: EdgeInsets.only(top: 10),
-            child: Center(
-              child: Text(
-                'CALCULATOR YOUR BMI',
-                style: textbutonstyle,
-              ),
-            ),
+          lastbutton(
+            onClick: () {
+              () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return resultPage();
+                    },
+                  ),
+                );
+              };
+            },
+            textt: 'CALCULATE YOUR BMI',
           ),
         ],
       ),
     );
   }
 }
+
