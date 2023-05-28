@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'constant.dart';
 class iconPart extends StatelessWidget {
   final IconData useIcon;
   final String Lable;
@@ -19,12 +20,8 @@ class iconPart extends StatelessWidget {
         ),
         Text(
           Lable,
-          style: TextStyle(
-            fontSize: 15,
-            color: Color(0xFF868892),
-            fontWeight: FontWeight.bold,
-          ),
-        )
+          style:textstyl,
+        ),
       ],
     );
   }
