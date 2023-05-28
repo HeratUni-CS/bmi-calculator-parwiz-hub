@@ -1,3 +1,4 @@
+import 'package:bmi_starting/main.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'iconData.dart';
@@ -6,6 +7,7 @@ import 'constant.dart';
 import 'mybutton.dart';
 import 'resultpage.dart';
 import 'lastButton.dart';
+import 'bmicalculator.dart';
 
 enum gender { Male, Female }
 
@@ -192,22 +194,28 @@ class _InputPageState extends State<InputPage> {
           ),
           lastbutton(
             onClick: () {
-              () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return resultPage();
-                    },
-                  ),
-                );
-              };
+              BmiCalculate bmiCalculate = BmiCalculate(
+                height: height,
+                weight: weight,
+              );
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return resultPage(
+                      result: bmiCalculate.getResult(),
+                      BMI: bmiCalculate.getbmi(),
+                      interprate: bmiCalculate.getInterprate(),
+                    );
+                  },
+                ),
+              );
             },
-            textt: 'CALCULATE YOUR BMI',
+            textt: 'CALCULAT YOUR BMI',
           ),
         ],
       ),
     );
   }
 }
-
