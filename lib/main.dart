@@ -11,6 +11,7 @@ class BMICalculator extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         appBarTheme: AppBarTheme(backgroundColor: Color(0xFF0A0D22)),
         scaffoldBackgroundColor: Color(0xFF0A0D25),
+        
       ),
       home: InputPage(),
     );

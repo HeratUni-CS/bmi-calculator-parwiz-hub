@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'iconData.dart';
 import 'reusableWidget.dart';
 import 'constant.dart';
+import 'mybutton.dart';
 
 enum gender { Male, Female }
 
@@ -13,6 +14,8 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   int hieght = 100;
+  int weight = 67;
+  int age = 25;
   @override
   gender? selectgender;
 
@@ -104,18 +107,99 @@ class _InputPageState extends State<InputPage> {
               children: [
                 usableWidget(
                   color: firstColor,
+                  icon: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'WEIGHT',
+                        style: textstyl,
+                      ),
+                      Text(
+                        weight.toString(),
+                        style: Nstyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          mybutton(
+                            myicon: Icons.add,
+                            onClick: () {
+                              setState(() {
+                                weight++;
+                              });
+                            },
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          mybutton(
+                            myicon: Icons.remove,
+                            onClick: () {
+                              setState(() {
+                                weight--;
+                              });
+                            },
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
                 usableWidget(
                   color: firstColor,
+                  icon: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Age',
+                        style: textstyl,
+                      ),
+                      Text(
+                        age.toString(),
+                        style: Nstyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          mybutton(
+                            myicon: Icons.add,
+                            onClick: () {
+                              setState(() {
+                                age++;
+                              });
+                            },
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          mybutton(
+                            myicon: Icons.remove,
+                            onClick: () {
+                              setState(() {
+                                age--;
+                              });
+                            },
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
           Container(
+            width: double.infinity,
             height: 65,
             color: B_color,
             margin: EdgeInsets.only(top: 10),
-          )
+            child: Center(
+              child: Text(
+                'CALCULATOR YOUR BMI',
+                style: textbutonstyle,
+              ),
+            ),
+          ),
         ],
       ),
     );
